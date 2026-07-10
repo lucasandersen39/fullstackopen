@@ -18,10 +18,12 @@ const Part = (props) => (
 const Total = (props) => <p><b>total of {props.total} exercises</b></p>
 
 const Course = ({ course }) => {
-    const total = course.parts[0].exercises +
-        course.parts[1].exercises +
-        course.parts[2].exercises
-
+    // const total = course.parts[0].exercises +
+    //     course.parts[1].exercises +
+    //     course.parts[2].exercises
+    const total = course.parts.reduce((accumulated, currentValue) => {
+        return accumulated + currentValue.exercises
+    }, 0)
     return (
         <div>
             <Header course={course.name} />
