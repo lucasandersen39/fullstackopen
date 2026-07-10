@@ -3,16 +3,20 @@ import './App.css'
 import { useState } from 'react'
 
 const Statistics = (props) => {
+  if (props.total > 0) {
+    return (
+      <>
+        <p>good {props.good}</p>
+        <p>neutral {props.neutral}</p>
+        <p>bad {props.bad}</p>
+        <p>all {props.total}</p>
+        <p>average {props.average / props.total}</p>
+        <p>positive {(props.positive / props.total) * 100} %</p>
+      </>
+    )
+  }
   return (
-    <>
-      <h2> statistics</h2>
-      <p>good {props.good}</p>
-      <p>neutral {props.neutral}</p>
-      <p>bad {props.bad}</p>
-      <p>all {props.total}</p>
-      <p>average {props.average / props.total}</p>
-      <p>positive {(props.positive / props.total) * 100} %</p>
-    </>
+    <div>No feedback given</div>
   )
 }
 
@@ -49,6 +53,7 @@ const App = () => {
       <button onClick={handleGood}>good</button>
       <button onClick={handleNeutral}>neutral</button>
       <button onClick={handleBad}>bad</button>
+      <h2> statistics</h2>
       <Statistics good={good} neutral={neutral} bad={bad} total={total} average={average} positive={positive} />
     </div >
   )
