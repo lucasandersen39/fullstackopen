@@ -2,23 +2,28 @@ import './App.css'
 
 import { useState } from 'react'
 
-const StatisticLine = (props) => {
+const StatisticLine = ({ text, value }) => {
   return (
-    <p>{props.text} {props.value}</p>
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
   )
 }
 
 const Statistics = (props) => {
   if (props.total > 0) {
     return (
-      <>
-        <StatisticLine text="good" value={props.good} />
-        <StatisticLine text="neutral" value={props.neutral} />
-        <StatisticLine text="bad" value={props.bad} />
-        <StatisticLine text="all" value={props.total} />
-        <StatisticLine text="average" value={props.average / props.total} />
-        <StatisticLine text="positive" value={(props.positive / props.total) * 100} />
-      </>
+      <table>
+        <tbody>
+          <StatisticLine text="good" value={props.good} />
+          <StatisticLine text="neutral" value={props.neutral} />
+          <StatisticLine text="bad" value={props.bad} />
+          <StatisticLine text="all" value={props.total} />
+          <StatisticLine text="average" value={props.average / props.total} />
+          <StatisticLine text="positive" value={(props.positive / props.total) * 100} />
+        </tbody>
+      </table>
     )
   }
   return (
