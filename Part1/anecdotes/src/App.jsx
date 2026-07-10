@@ -1,5 +1,11 @@
 import { useState } from 'react'
 import './App.css'
+const Votes = ({ votes }) => {
+  return (
+    <p>has {votes} votes</p>
+  )
+}
+
 
 function App() {
   const anecdotes = [
@@ -15,6 +21,7 @@ function App() {
 
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(new Array(8).fill(0))
+  const [mostVotes, setMostVotes] = useState(0)
 
   const handleClick = () => {
     let random = Math.floor(Math.random() * anecdotes.length);
@@ -25,15 +32,21 @@ function App() {
     const copyVotes = [...votes]
     copyVotes[selected] = copyVotes[selected] + 1
     setVotes(copyVotes)
+    setMostVotes(copyVotes.indexOf(Math.max(...copyVotes)))
   }
   return (
     <div>
+      <h2>Anecdote of the day</h2>
       <p>
         {anecdotes[selected]}
       </p>
-      <p>has {votes[selected]} votes</p>
+      <Votes votes={votes[selected]} />
       <button onClick={handleVote}>vote</button>
       <button onClick={handleClick}>next anecdote</button>
+      <br></br>
+      <h2>Anecdote with most votes</h2>
+      <p>{anecdotes[mostVotes]}</p>
+      <Votes votes={votes[mostVotes]} />
     </div>
   )
 }
