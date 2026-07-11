@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import ListPersons from './components/ListPersons'
+import personService from './services/persons'
 
 function App() {
 
@@ -36,9 +36,9 @@ function App() {
       name: newName,
       number: newNumber
     }
-    axios.post('http://localhost:3001/persons', newPerson)
-      .then(response => {
-        setPersons(persons.concat(response.data))
+    personService.create(newPerson)
+      .then(data => {
+        setPersons(persons.concat(data))
         setNewName('')
         setNewNumber('')
       }
@@ -51,10 +51,10 @@ function App() {
   const showPhoneBook = (showPhones == '') ? persons : persons.filter(person => person.name.includes(showPhones))
 
   useEffect(() => {
-    axios.get('http://localhost:3001/persons')
-      .then(response => {
-        console.log("DATA RESPONSE ", response)
-        setPersons(response.data)
+    personService.getAll()
+      .then(data => {
+        console.log("DATA RESPONSE ", data)
+        setPersons(data)
       })
   }, []) // Con [] el useEffect se ejecuta una vez cuando se renderiza el componente
 

@@ -1,40 +1,50 @@
 {
-  "persons": [
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": "1"
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": "2"
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": "3"
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": "4"
-    },
-    {
-      "name": "Phill Collins",
-      "number": "39-23-6458822",
-      "id": "4"
-    },
-    {
-      "name": "John Ferdinand",
-      "number": "1258-6588",
-      "id": "hxtgTSFzoKg"
-    },
-    {
-      "name": "Jane Laspada",
-      "number": "234432-665",
-      "id": "TE4ZScDnXDo"
-    }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+    "persons": [
+        {
+            "name": "Arto Hellas",
+            "number": "040-123456",
+            "id": "1"
+        },
+        {
+            "name": "Ada Lovelace",
+            "number": "39-44-5323523",
+            "id": "2"
+        },
+        {
+            "name": "Dan Abramov",
+            "number": "12-43-234345",
+            "id": "3"
+        },
+        {
+            "name": "Mary Poppendieck",
+            "number": "39-23-6423122",
+            "id": "4"
+        },
+        {
+            "name": "Phill Collins",
+            "number": "39-23-6458822",
+            "id": "4"
+        },
+        {
+            "name": "John Ferdinand",
+            "number": "1258-6588",
+            "id": "hxtgTSFzoKg"
+        },
+        {
+            "name": "Jane Laspada",
+            "number": "234432-665",
+            "id": "TE4ZScDnXDo"
+        },
+        {
+            "name": "Gale Gambino",
+            "number": "123-122",
+            "id": "5gDYL8uqeRg"
+        },
+        {
+            "name": "Gilbert Fondeau",
+            "number": "345934-23223",
+            "id": "i7TJ8wsmQMo"
+        }
+    ],
+    "$schema": "./node_modules/json-server/schema.json"
 }
