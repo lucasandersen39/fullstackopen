@@ -29,11 +29,6 @@
       "name": "Jane Laspada",
       "number": "234432-665",
       "id": "TE4ZScDnXDo"
-    },
-    {
-      "name": "Gale Gambino",
-      "number": "235235",
-      "id": "u5094rtRU8s"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -5,6 +5,7 @@ import PersonForm from './components/PersonForm'
 import ListPersons from './components/ListPersons'
 import personService from './services/persons'
 import SuccessMessage from './components/SeccessMessage'
+import ErrorMessage from './components/ErrorMessage'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
   const [newNumber, setNewNumber] = useState('')
   const [showPhones, setShowPhones] = useState('')
   const [successMessage, setSuccessMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -35,6 +37,9 @@ function App() {
         setNewName('')
         setNewNumber('')
         changeSuccessMessage(`Updated ${personUpdate.name}`)
+      })
+      .catch(() => {
+        changeErrorMessage(`Error. ${personUpdate.name} couldn't be updated`)
       })
   }
 
@@ -69,7 +74,9 @@ function App() {
         setNewName('')
         setNewNumber('')
       }
-      )
+      ).catch(() => {
+        changeErrorMessage(`Error. ${newPerson.name} couldn't be saved`)
+      })
   }
 
   const handleDeletePerson = (id) => {
@@ -80,8 +87,13 @@ function App() {
     }
     if (window.confirm(`Delete ${person.name}?`)) {
       personService.deletePerson(person.id)
-      setPersons(persons.filter(p => p.id !== id))
-      changeSuccessMessage(`Deleted ${person.name}`)
+        .then(() => {
+          setPersons(persons.filter(p => p.id !== id))
+          changeSuccessMessage(`Deleted ${person.name}`)
+        }
+        ).catch(() => {
+          changeErrorMessage(`Error. ${person.name} was already remove from server`)
+        })
     }
   }
 
@@ -91,6 +103,14 @@ function App() {
       setSuccessMessage(null)
     }, 5000)
   }
+
+  const changeErrorMessage = (message) => {
+    setErrorMessage(message)
+    setTimeout(() => {
+      setErrorMessage(null)
+    }, 5000)
+  }
+
 
   const handleFilterChange = (event) => {
     setShowPhones(event.target.value)
@@ -102,12 +122,16 @@ function App() {
       .then(data => {
         setPersons(data)
       })
+      .catch(() => {
+        changeErrorMessage(`Error`)
+      })
   }, []) // Con [] el useEffect se ejecuta una vez cuando se renderiza el componente
 
   return (
     <div>
       <h2>Phonebook</h2>
       <SuccessMessage message={successMessage} />
+      <ErrorMessage message={errorMessage} />
       <Filter handleFilterChange={handleFilterChange} />
       <br></br>
       <PersonForm
