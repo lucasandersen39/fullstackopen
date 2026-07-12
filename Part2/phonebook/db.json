@@ -2,7 +2,7 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "6543456",
+      "number": "33333",
       "id": "1"
     },
     {
@@ -32,13 +32,8 @@
     },
     {
       "name": "Gale Gambino",
-      "number": "123-122",
-      "id": "5gDYL8uqeRg"
-    },
-    {
-      "name": "Gilbert Fondeau",
-      "number": "345934-23223",
-      "id": "i7TJ8wsmQMo"
+      "number": "235235",
+      "id": "u5094rtRU8s"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
