@@ -1,5 +1,15 @@
 .listCountryName {
     list-style-type: none;
     padding: 0;
-    margin: 10px;
+}
+
+.liCountryName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5px;
+}
+
+.liCountryName:hover {
+    background-color: rgb(179, 181, 166);
 }

@@ -1,5 +1,5 @@
 import './listCountryName.css'
-const ListCountryName = ({ countries }) => {
+const ListCountryName = ({ countries, handleViewCountry }) => {
     if (!countries) {
         return null
     }
@@ -10,7 +10,12 @@ const ListCountryName = ({ countries }) => {
     }
     return (
         <ul className="listCountryName">
-            {countries.map((country, index) => { return <li key={index}>{country.common}</li> })}
+            {countries.map((country, index) => {
+                return <li key={index} className="liCountryName">
+                    <span>{country.common}</span>
+                    <button onClick={() => { handleViewCountry(country.common) }}>Show</button>
+                </li>
+            })}
         </ul>
     )
 }

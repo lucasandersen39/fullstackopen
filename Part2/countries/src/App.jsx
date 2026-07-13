@@ -38,13 +38,17 @@ function App() {
     }
   }
 
+  const handleViewCountry = (commonName) => {
+    setUniqueResult(commonName)
+  }
+
   return (
     <>
-      <div style={{ "margin": "10px", "backgroundColor": "lightgray", "padding": "10px" }}>
+      <div style={{ "margin": "10px", "padding": "10px", "width": "300px" }}>
         <p>find countries</p>
         <input onChange={handleChangeSearch}></input>
+        <ListCountryName countries={countriesList} handleViewCountry={handleViewCountry} />
       </div>
-      <ListCountryName countries={countriesList} />
       <ShowCountryInfo info={countryShow} />
     </>
   )
